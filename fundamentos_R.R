@@ -28,3 +28,45 @@ listilla$nombre
 # Las matrices son internamente vectores de vectores
 matricilla
 matricilla[2]
+
+# Al estilo MATLAB, multiplicar un vector por un escalar se hace directo
+vectorcillo_doble = vectorcillo * 2
+vectorcillo_doble
+
+# Las indexaciones de PANDAS provienen de R
+vectorcillo[1:3]
+vectorcillo[vectorcillo >= 3]
+vectorcillo_doble[vectorcillo_doble >= 3]
+
+# Los vectores pueden ser de tipos mixtos
+surtido <- c(3232, "skvrn", FALSE)
+
+# Las operaciones de matrices son como en MATLAB
+cuadrado <- matricilla %*% matricilla
+transpuesta <- t(matricilla)
+cuadrado
+transpuesta
+
+# Matriz inversa (pero necesito otra matriz porque esta es singular)
+#inversa = solve(matricilla)
+#inversa
+
+# Producto directo de vectores
+prod_directo <- vectorcillo * vectorcillo
+
+# Data frame de práctica
+datos <- data.frame(
+   nombre = c("Diego", "David", "Yo"),
+   edad = c(25, 40, 38),
+   salario = c(20000, 20000, 200000)
+)
+datos$scrum_master = c(FALSE, TRUE, FALSE)
+datos
+
+# Agregación
+resumen1 <- aggregate(salario ~ edad, data=datos, FUN=mean)
+resumen1
+
+# R tiene ayuda inline en la consola con preguntación. En R Studio, aparece en
+# la pestaña Help.
+?mean
