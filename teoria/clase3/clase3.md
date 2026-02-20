@@ -46,6 +46,10 @@ Consistencia + generalización
 **Ejemplo:**
 
 * Hipótesis inicial: h = (?,?,?)
+    * La preguntación significa comodín, quiere decir que cualquier valor es válido para ese atributo. Ejemplos:
+        * (manzana, roja, grande): sólo manzanas rojas y grandes
+        * (manzana, ?, grande): manzanas grandes, cualquier color
+        * (manzana, ?, ?): manzanas, cualquier color y tamaño
 * Ejemplo positivo: (A,B,C) -> 1 => h = (A,B,C)
 * Ejemplo negativo: (A,B,D) -> 0 => hipótesis permanece
 
@@ -54,3 +58,13 @@ Consistencia + generalización
 * ¿Cómo se compara con otros métodos de aprendizaje supervisado?
 
 
+
+# Tipos principales de algoritmos
+
+* **Conjunctive concepts:** conceptos definidos por conjuntos de atributos
+* **Version spaces:** mantiene el conjunto de todas las hipótesis consistentes
+* **Find-S:** encuentra la hipótesis más especifica que sea consistente
+* **Candidate elimination:** mantiene hipótesis más generales y específicas
+
+
+Find S tiene limitaciones importantes:
