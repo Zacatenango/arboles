@@ -144,3 +144,66 @@ Y así llegamos a nuestro modelo de decisión: h = (?, ?, ?, débil)
 * Una sola hipótesis a la vez.
 
 Si nustros datos tuvieran un día de viento fuerte en el cual pudimos jugar tenis, esto le parte la mandarina en gajos a la hipótesis y nos saldría algo que claramente contradice nuestros datos. Find-S no es capaz de tomar en cuenta matices, es absoluto.
+
+
+# Generadiles
+
+## Ruido en datos
+
+**Ruido en datos:** valores incorrectos o imprecisos, errores de medición, datos faltantes, datos patológicos.
+
+**Ruido en etiquetas:** clasificación incorrecta, inconsistencias en el etiquetado, ambigüedad en clases, error humano en anotación.
+
+| Método | Fortaleza | Debilidad |
+| - | - | -
+| CLS | Reglas explícitas | Altamente sensible al ruido
+| Bosque aleatorio | Robusto al ruido | Menos interpretable
+| SVM | Margen de separación | Complejidad computacional 
+| Redes neurales | Adaptables | Requiere muchos datos
+| Bayes ingenuo | Probabilístico | Supuestos fuertes
+
+**Estrategias de manejo de ruido:**
+
+* **CLS:** Preprocesamiento, validación cruzada, reglas de poda, umbrales de confianza
+* **Otros métodos:** Regularización, ensemble learning, técnicas bayesianas, validación robusta.
+
+**Preprocesamiento:**
+
+* Limpieza de datos
+* Detección de patológicos
+* Normalización
+* Manejo de valores faltantes
+
+## Problemas específicos de los CLS
+
+* **Sobreespecialización:** reglas demasiado específicas, pérdida de generalización, recordar el ruido como si fueran datos.
+* **Inconsistencias:** reglas contradictorias, conflictos en clasificación, decisiones inestables.
+* **Convergencia:** dificultad para encontrar reglas consistentes, mayor tiempo de entrenamiento, posible no convergencia.
+* **Complejidad computacional exponencial.**
+* **Sensible al orden de los ejemplos.**
+
+![skvrn](image.png)
+
+## Cuándo usar CLS
+
+**Sí usar cuando:**
+* Los datos están limpiecitos y estructurados.
+* El dominio está bien definido.
+* Es fundamental interpretar los datos.
+    * Ejemplo: la ley mexicana en materia crediticia le dice a los bancos qué modelos pueden usarse para determinar la elegibilidad de una persona para contratar crédito, pues un modelo poco interpretable sería una violación al principio de legalidad de la Constitución al arrojar un resultado que no pueda ser fundado y motivado; los CLS aquí permiten rastrear los motivos que llevaron al algoritmo a determinar otorgarle o negarle el crédito a una persona.
+
+**No usar cuando:**
+* Hay mucho ruido.
+* Los datos son inconsistentes.
+* La precisión es más importante.
+
+**Ejemplos de aplicaciones:**
+
+* **Detección de spam:**
+    * **Atributos:** "oferta" en el título, enlace externo, remitente desconocido
+    * **Ejemplo de hipótesis final:** h = (?, True, True) -- es spam si tiene un enlace externo y proviene de un remitente desconocido.
+* **Diagnóstico médico.**
+
+
+## Relación con otros modelos
+
