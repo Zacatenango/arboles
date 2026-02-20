@@ -67,4 +67,63 @@ Consistencia + generalización
 * **Candidate elimination:** mantiene hipótesis más generales y específicas
 
 
+# El algoritmo Find-S
+
+Este algoritmo encuentra la hipótesis más específica que sea consistente para todos los ejemplos positivos.
+
+**Reglas:**
+
+* **Inicialización:** h = (null, null, null)
+* **Ejemplos negativos:** no actualizar la hipótesis
+* **Ejemplos positivos:**
+    * Si es el primero: copiar todos los atributos
+    * Difiere: generalizar el atributo a ?.
+* **Simbología:**
+    * null = imposible
+    * preguntación = cualquier valor
+
+## Problema de ejemplo: un buen día para jugar tenis
+
+**Objetivo:** aprender cuándo es un buen día para jugar tenis basado en condiciones climáticas.
+
+**Atributos:**
+* **Clima:** { soleado, nublado, lluvioso }
+* **Temperatura:** { caliente, templada, fría }
+* **Humedad:** { alta, normal }
+* **Viento:** { fuerte, débil }
+
+**Una instancia:** (soleado, caliente, alta, débil)
+
+**Juego de datos:**
+
+| Sol | Temperatura | Humedad | Viento | ¿Se puede jugar? |
+| --- | ----------- | ------- | ------ | ---------------- |
+| soleado | caliente | alta | débil | no
+| soleado | caliente | alta | fuerte | no
+| nublado | caliente | alta | débil | sí
+| lluvioso | templado | alta | débil | sí
+| lluvioso | frío | normal | débil | sí
+
+
+## Solución
+
+**Inicialización:** h = (null, null, null, null)
+
+**Recorremos el conjunto de datos.**
+
+1. (soleado, caliente, alta, débil) = no
+    * Negativo, no se actualiza, h = (null, null, null, null)
+2. (soleado, caliente, alta, fuerte) = no
+    * Negativo, no se actualiza, h = (null, null, null, null)
+3. (nublado, caliente, alta, débil) = sí
+    * ¡Positivo!
+    * Primer ejemplo positivo, copiamos todo
+    * h = (nublado, caliente, alta, débil)
+4. (lluvioso, templado, alta, débil) = sí
+    * Positivo, ya tenemos hipótesis, actualizamos
+    * Nivel de sol difiere, h = (?, caliente, alta, débil)
+    * Temperatura difiere, h = (?, ?, alta, débil)
+    * Humedad es igual, h = (?, ?, alta, débil)
+    * Viento es igual, h = (?, ?, alta, débil)
+
 Find S tiene limitaciones importantes:
