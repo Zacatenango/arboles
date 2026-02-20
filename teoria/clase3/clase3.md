@@ -29,4 +29,28 @@ Desarrollado en un contexto donde se buscaban modelos formales de aprendizaje ma
     * Se ajusta la hipótesis con base en ejemplos positivos o negativos
     * Se refina hasta que no haya contradicciones con los datos
 
+Inicializamos la hipótesis h como la expresión más general. Ejemplo: (xi, yi) es positivo y h(xi) es falso
+
+**Meta:** Buscar una hipótesis h en H tal que h(x) = c(x) para todos los ejemplos de entrenamiento, donde existen pares (x, c(x)) donde x es una instancia y c(x) es una etiqueta.
+
+**Desafío:** La hipótesis también debe generalizar bien a nuevas instancias no vistas durante el entrenamiento.
+
+Consistencia + generalización
+
+# Proceso de aprendizaje
+
+1. Partimos de la hipótesis más general (h0 = T) o la más específica (h0 = perpendicular)
+2. Se actualiza la hipótesis con base en ejemplos positivos y negativos.
+3. Se obtiene una hipótesis final consistente con los datos
+
+**Ejemplo:**
+
+* Hipótesis inicial: h = (?,?,?)
+* Ejemplo positivo: (A,B,C) -> 1 => h = (A,B,C)
+* Ejemplo negativo: (A,B,D) -> 0 => hipótesis permanece
+
+**Discusión:**
+* ¿Qué sucede si hay ruido en los datos?
+* ¿Cómo se compara con otros métodos de aprendizaje supervisado?
+
 
