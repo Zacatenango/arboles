@@ -2,7 +2,7 @@ library(rpart)
 library(rpart.plot)
 
 data(iris)
-set.seed(297)
+set.seed(297974)
 train_idx <- sample(seq_len(nrow(iris)), size = floor(0.8 * nrow(iris)))
 train <- iris[train_idx, ]
 test  <- iris[-train_idx, ]
@@ -34,7 +34,7 @@ if (!is.null(tree_model$variable.importance))
 #########
 
 data(mtcars)
-set.seed(297)
+set.seed(297974)
 train_idx <- sample(1:nrow(mtcars), 0.8*nrow(mtcars))
 train <- mtcars[train_idx, ]
 test <- mtcars[-train_idx, ]
