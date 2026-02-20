@@ -103,6 +103,7 @@ Este algoritmo encuentra la hipótesis más específica que sea consistente para
 | nublado | caliente | alta | débil | sí
 | lluvioso | templado | alta | débil | sí
 | lluvioso | frío | normal | débil | sí
+| lluvioso | frío | normal | fuerte | no
 
 
 ## Solución
@@ -125,5 +126,21 @@ Este algoritmo encuentra la hipótesis más específica que sea consistente para
     * Temperatura difiere, h = (?, ?, alta, débil)
     * Humedad es igual, h = (?, ?, alta, débil)
     * Viento es igual, h = (?, ?, alta, débil)
+5. (lluvioso, frío, normal, débil) = sí
+    * Humedad difiere, h = (?, ?, ?, débil)
+    * Viento es igual, h = (?, ?, ?, débil)
+6. (lluvioso, frío, normal, fuerte) = no
+    * Negativo, saltamos
 
-Find S tiene limitaciones importantes:
+Y así llegamos a nuestro modelo de decisión: h = (?, ?, ?, débil)
+
+**Problema:** ¿Qué pasa si por alguna razón sí podemos jugar tenis con mucho viento y guardamos eso? Pues la hipótesis termina haciéndose h = (?, ?, ?, ?) y se vuelve inútil. Pasa a ser una hipótesis que no nos dice nada.
+
+## Limitaciones de Find-S
+
+* Sólo considera ejemplos positivos, ignora los negativos.
+* Encuentra hipótesis específicas, por lo que puede sobregeneralizar.
+* Da por sentado que todos los ejemplos son correctos; en la vida real eso no suele ser el caso.
+* Una sola hipótesis a la vez.
+
+Si nustros datos tuvieran un día de viento fuerte en el cual pudimos jugar tenis, esto le parte la mandarina en gajos a la hipótesis y nos saldría algo que claramente contradice nuestros datos. Find-S no es capaz de tomar en cuenta matices, es absoluto.
