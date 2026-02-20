@@ -1,2 +1,18 @@
 library(rpart)
 library(rpart.plot)
+
+tree_model <- rpart(Species ~ ., data=train, method="class", control=rpart.control(minsplit=10, cp=0.01, maxdepth=5))
+print(tree_model)
+summary(tree_model)
+rpart.plot(tree_model, extra=104, box.palette="RdYlGn", main="Árbol de decisión - Iris")
+printcp(tree_model)
+pred_class <- predict(tree_model, test, type="class")
+pred_prob <- predict(tree_model, test, type="prob")
+print("Primeras predicciones de clase")
+print(head(pred_class))
+print(head(pred_prob))
+confusion <- table(Predicho = pred_class, Real=test$Species)
+print(confusion)
+
+accuracy <- sum(diag(confusion)) / sum(confusion)
+print(paste("\nAccuracy:", round(accuracy, 3)))
