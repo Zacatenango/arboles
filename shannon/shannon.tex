@@ -68,9 +68,24 @@ Un canal discreto sin ruido es aquél a través del cual sea posible transmitir 
 En el caso del teletipo, es sencillo: cada símbolo representa $\log_2 32 = 5$ bits de información; y si el sistema es capaz de transmitir $n$ símbolos por segundo, entonces la capacidad del canal es $5n$ bits/s.
 
 
-\subsection{Caracterización de la fuente de información}
+\section{Caracterización de la fuente de información}
 
-La fuente de información puede caracterizarse a través 
+La fuente de información puede caracterizarse a través de un \textbf{proceso de Markov}, el cual inicialmente se modela como un grafo donde cada nodo es uno de los posibles símbolos que la fuente puede emitir, y cada arista es la probabilidad de que un símbolo siga después de otro. Una \textit{fuente ergódica} es aquella cuya cadena de Markov no consta de 2 partes aisladaas a través de las cuales es imposible transitar en términos de la información generada, y donde el máximo común divisor de las longitudes de los circuitos de la cadena de Markov sea 1 (de lo contrario la fuente de información produciría patrones periódicos). 
+
+A través del análisis matemático de las probabilidades de transición en el modelo de Markov, llegamos eventualmente a una métrica $H$ capaz de representar cuánto ``surtido de elección'' hubo en la generación del mensaje producido por la fuente:
+
+\[
+   H = - \sum_{n = 1}^{n} p_i \log p_i
+\]
+
+donde $K$ es una constante positiva, y $p_i$ es la probabilidad de que ocurra alguno de los posibles símbolos de nuestra fuente.
+
+Esta función $H$ es la \textbf{entropía de la información,} que representa la cantidad de bits que es necesaria para representar la salida de nuestra fuente. Este concepto forma parte de numerosas aplicaciones tales como los \textit{algoritmos de compresión de entropía}, que funcionan a través de recodificar una secuencia de datos (e.g. un archivo) de tal forma que su entropía se acerque lo más posible a 8 bits por byte.
+
+
+\section {Representación de las operaciones de codificación y decodificación}
+
+
 
 
 
