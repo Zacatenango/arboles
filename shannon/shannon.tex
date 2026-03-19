@@ -39,44 +39,21 @@
 
 Desde el año de 1948, ya se habían desarrollado métodos hoy en día básicos de modulación de señales tales como \textit{pulse code modulation} (PCM), hoy en día usado no tanto para transmitir señales físicas sino más bien para representar señales digitales en términos de su valor máximo discretizado casi siempre a 8, 16 o 32 bits; así como el método PPM, el cual ha caído en desuso por la complejidad que representa usarlo para transmitir señales digitales y su escasa practicidad para otros fines. La base de dicha teoría fue desarrollada por otros influyentes pioneros de la ciencia de telecomunicaciones tales como Harry Nyquist, del cual Shannon cita su artículo \textit{``Algunos factores que afectan la velocidad de los telégrafos''}, en el cual Nyquist estudia la distorsión de las señales de los telégrafos de entonces al pasar por el medio de transmisión y propone la técnica de \textit{signal shaping} (darle a cada pulso una forma de onda que minimice la interferencia inducida en otros circuitos), y una elección de códigos de transmisión de señal que maximice la cantidad de \textit{``inteligencia''} que se puede transmitir con un cierto número de elementos de señal.
 
+Podemos ver aquí cómo, desde antes de que Shannon acuñara el concepto, ya se estaba empezando a hablar de una ``inteligencia'' de las comunicaciones, refiriéndose al contenido que éstos llevan. En su artículo, Shannon nos recuerda que \textbf{el problema fundamental de las comunicaciones,} entendidas en su más amplia definición humana, \textbf{es reproducir en un punto un mensaje elegido en otro punto de forma exacta o aproximada.} Los mensajes con frecuencia tienen un significado, es decir, hacen referencia o están correlacionadas a algún sistema conforme a entidades físicas o conceptuales: el documento PDF que contiene esta tarea es ultimadamente una señal, representada por la polaridad de los campos magnéticos del plato de alguno de los millones de discos magnéticos que maneja el servicio \faAws{} Amazon S3 en el cual está montada la plataforma Canvas, y sin embargo, esta señal tiene un significado específico: su contenido está estructurado especialmente para que, al abrirlo con una aplicación diseñada para decodificar datos conforme al estándar ISO 19005 PDF/A, en nuestro equipo aparezca una representación digital de un documento impreso que contiene un resumen del artículo de Claude Shannon. Este mensaje, en términos estadísticos, es uno de cualquier mensaje que se pueda enviar con esa misma cantidad de bits; y los sistemas de transmisión y almacenamiento de datos deben estar diseñados de tal forma que funcionen con cualquier conjunto de mensajes posibles.
+
+En este sentido, si el número de mensajes que podemos enviar en un conjunto de símbolos es finito, entonces ese número puede medirse como una medida de la información producida cuando se elige un mensaje de entre el conjunto total, siendo todas las posibles opciones igualmente probables (distribución discreta uniforme). Shannon elige las medidas logarítmicas para medir ese contenido de información en parte porque varias métricas ingenierilmente relevantes, tales como el tiempo de transmisión o el ancho de banda de transmisión necesario, tienden a ser linealmente proporcionales al logaritmo de la cantidad de posibilidades; porque es intuitivo, ya que es fácil dar por sentado que 2 tarjetas perforadas o 2 cubetas de Amazon S3 con límite de tamaño deberían tener el doble de capacidad de almacenamiento que una sola de ellas, o que 2 cables de transmisión deberían tener el doble de capacidad que uno solo; y porque esto simplifica el manejo matemático de varias operaciones.
+
+En este sentido, la base del logaritmo corresponde a cuántas piezas de información se puede representar con nuestra unidad de transmisión o almacenamiento de información. Por ser una unidad fácil de representar a través de un circuito electrónico con 2 estados estables tales como un relevador o un \textit{flip-flop}, es en este artículo que Shannon sugiere usar el dígito binario, o \textit{bit}, como la mínima unidad posible de transmisión o almacenamiento de datos; convención que todavía hoy, 78 años después de la publicación de su artículo, se sigue observando por lo sencillo que ha resultado ser implementarla en físico. Un solo dígito binario, o en términos físicos un solo flip-flop biestable, puede almacenar 2 estados que pueden interpretarse como "cierto" o "falso", o como los dígitos 0 y 1. Si añadimos un segundo flip-flop biestable, tenemos ahora 2 bits con los cuales podemos representar $2^2 = 4$ dígitos posibles, y por ende, para poder almacenar 4 dígitos posibles necesitamos $\log_2 4 = 2$ bits. Y si queremos representar 256 dígitos posibles, necesitaremos para ello $\log_2 256 = 8$ bits, correspondientes a 8 flip-flops biestables, 8 agujeros en una tarjeta perforada, 8 pistas de circuito impreso, \&c.
+
+Por supuesto, nada nos impide usar dígitos decimales. En este caso, si tuviéramos que usar bits para representarlos, necesitaríamos $\ln 10 / \ln 2 \approx 3.32$ bits para representarlos. Y si nos vamos a las matemáticas abstractas, podemos incluso manejar dígitos abstractos capaces de tener $e$ valores, lo que permite usar el logaritmo natural para hacer nuestros cálculos, con la simplificación algebraica que éste trae como resultado.
 
 
 
 
 
-\section {Cálculo en Python del tema actual}
-
-
-\subsection {Requisitos}
-
-\begin {itemize}
-\item Restricción del problema 1
-\item Restricción del problema 2
-\end {itemize}
-
-
-\subsection {Procedimiento}
-
-Breve explicación del Procedimiento
-
-
-\subsection {Respuestas}
-
-Respuestas de los ejercicios
-
-
-
-\clearpage
-\section*{Código Python}
-\begin{verbatim}
-#!/usr/bin/env python3
-
-# Adjuntar aquí el código de Python usado para resolver el ejercicio
-\end{verbatim}
-
-\bibliographystyle{apalike}
+%\bibliographystyle{apalike}
 % \bibliographystyle{inlinebib}
-\clearpage
-\bibliography{../bibliografias}
+%\clearpage
+%\bibliography{../bibliografias}
 
 \end{document}

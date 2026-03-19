@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.16)  19 MAR 2026 14:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.10.16)  19 MAR 2026 15:52
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -783,27 +783,24 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 37.
  (C:\Users\danuk\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
+LaTeX Font Info:    Trying to load font information for U+fontawesomebrands0 on input line 42.
+ (C:\Users\danuk\AppData\Local\Programs\MiKTeX\tex/latex/fontawesome5\ufontawesomebrands0.fd)
+LaTeX Font Info:    Font shape `U/fontawesomebrands0/solid/n' in size <10> not available
+(Font)              Font shape `U/fontawesomebrands0/regular/n' tried instead on input line 42.
+
 
 [1
 
-{C:/Users/danuk/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/danuk/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}]
-
-[2]
-LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 71.
- (C:\Users\danuk\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
-File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
-)
-Overfull \hbox (11.99896pt too wide) in paragraph at lines 74--74
-[]\T1/lmtt/m/n/10 # Adjuntar aquí el código de Python usado para resolver el ejercicio[] 
- []
+{C:/Users/danuk/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/danuk/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}{C:/Users/danuk/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/fontawesome5/fa5brands0.enc}]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 46.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 46.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 46.
 
 
-
-[3
-
-]
-No file shannon.bbl.
-
+[2{C:/Users/danuk/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/danuk/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Users/danuk/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}] 
 enddocument/afterlastpage (AED): lastpage setting LastPage.
 (shannon.aux
 LaTeX Info: Redefining \. on input line 14.
@@ -814,20 +811,20 @@ LaTeX2e <2025-06-01> patch level 1
 L3 programming layer <2025-06-09>
  ***********
 Package rerunfilecheck Info: File `shannon.out' has not changed.
-(rerunfilecheck)             Checksum: C59A87F2AD8234352FD10BBA38EDB98B;668.
+(rerunfilecheck)             Checksum: E62C6D918433D5AAD12CD53CDEFE43A7;106.
  ) 
 Here is how much of TeX's memory you used:
- 29804 strings out of 468221
- 611651 string characters out of 5432890
- 948692 words of memory out of 5000000
- 57867 multiletter control sequences out of 15000+600000
- 662535 words of font info for 66 fonts, out of 8000000 for 9000
+ 29803 strings out of 468221
+ 611700 string characters out of 5432890
+ 951686 words of memory out of 5000000
+ 57856 multiletter control sequences out of 15000+600000
+ 677557 words of font info for 82 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 92i,6n,94p,1308b,1045s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/danuk/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/danuk/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/danuk/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/danuk/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Users/danuk/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/danuk/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb>
-Output written on shannon.pdf (3 pages, 167453 bytes).
+ 92i,6n,94p,1669b,1043s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<C:/Users/danuk/AppData/Local/Programs/MiKTeX/fonts/type1/public/fontawesome5/FontAwesome5Brands-Regular.pfb><C:/Users/danuk/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/danuk/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/danuk/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/danuk/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/danuk/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/danuk/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr17.pfb><C:/Users/danuk/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Users/danuk/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/danuk/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb>
+Output written on shannon.pdf (2 pages, 209536 bytes).
 PDF statistics:
- 77 PDF objects out of 1000 (max. 8388607)
- 10 named destinations out of 1000 (max. 500000)
- 53 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 84 PDF objects out of 1000 (max. 8388607)
+ 4 named destinations out of 1000 (max. 500000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
