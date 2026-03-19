@@ -1,0 +1,82 @@
+\documentclass[spanish]{article}
+\def\spanishoptions{mexico}
+\usepackage[spanish]{babel}      % Para procesar adecuadamente el español
+\usepackage[utf8]{inputenc}      % Codificación de entrada UTF-8
+\usepackage[T1]{fontenc}         % Codificación de salida T1
+\usepackage[official]{eurosym}   % Símbolo de euro
+\usepackage{siunitx}             % Paquete para unidades métricas
+\usepackage{textcomp}            % Tipografías compañeras
+\usepackage{lmodern}             % Tipografía Latin Modern
+\usepackage{moreverb}            % Para escribir código
+\usepackage{tfrupee}
+\usepackage{fontawesome5}
+\usepackage{parskip}
+\usepackage{hyperref}
+\usepackage{tasks}
+\usepackage{exsheets}
+\usepackage{enumitem}
+\usepackage{lastpage}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{apalike}
+\usepackage{relsize}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{fontawesome5}
+
+% Formato global:
+\setlength{\parindent}{0cm}      % Párrafos sin sangría inicial
+\hypersetup{pdfborder={0 0 0}}   % Ligas sin borde
+
+\begin {document}
+\title {Una teoría matemática de la comunicación}
+\author {Autor original: Claude E. Shannon \\ Autor del resumen: Acoyani Garrido Sandoval}
+\date {Artículo original: Octubre de 1948 \\ Resumen: 19 de Marzo de 2026}
+\maketitle
+
+\section {Introducción}
+
+Desde el año de 1948, ya se habían desarrollado métodos hoy en día básicos de modulación de señales tales como \textit{pulse code modulation} (PCM), hoy en día usado no tanto para transmitir señales físicas sino más bien para representar señales digitales en términos de su valor máximo discretizado casi siempre a 8, 16 o 32 bits; así como el método PPM, el cual ha caído en desuso por la complejidad que representa usarlo para transmitir señales digitales y su escasa practicidad para otros fines. La base de dicha teoría fue desarrollada por otros influyentes pioneros de la ciencia de telecomunicaciones tales como Harry Nyquist, del cual Shannon cita su artículo \textit{``Algunos factores que afectan la velocidad de los telégrafos''}, en el cual Nyquist estudia la distorsión de las señales de los telégrafos de entonces al pasar por el medio de transmisión y propone la técnica de \textit{signal shaping} (darle a cada pulso una forma de onda que minimice la interferencia inducida en otros circuitos), y una elección de códigos de transmisión de señal que maximice la cantidad de \textit{``inteligencia''} que se puede transmitir con un cierto número de elementos de señal.
+
+
+
+
+
+
+\section {Cálculo en Python del tema actual}
+
+
+\subsection {Requisitos}
+
+\begin {itemize}
+\item Restricción del problema 1
+\item Restricción del problema 2
+\end {itemize}
+
+
+\subsection {Procedimiento}
+
+Breve explicación del Procedimiento
+
+
+\subsection {Respuestas}
+
+Respuestas de los ejercicios
+
+
+
+\clearpage
+\section*{Código Python}
+\begin{verbatim}
+#!/usr/bin/env python3
+
+# Adjuntar aquí el código de Python usado para resolver el ejercicio
+\end{verbatim}
+
+\bibliographystyle{apalike}
+% \bibliographystyle{inlinebib}
+\clearpage
+\bibliography{../bibliografias}
+
+\end{document}
