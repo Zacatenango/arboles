@@ -47,6 +47,31 @@ En este sentido, la base del logaritmo corresponde a cuántas piezas de informac
 
 Por supuesto, nada nos impide usar dígitos decimales. En este caso, si tuviéramos que usar bits para representarlos, necesitaríamos $\ln 10 / \ln 2 \approx 3.32$ bits para representarlos. Y si nos vamos a las matemáticas abstractas, podemos incluso manejar dígitos abstractos capaces de tener $e$ valores, lo que permite usar el logaritmo natural para hacer nuestros cálculos, con la simplificación algebraica que éste trae como resultado.
 
+\section{El sistema básico de comunicación}
+
+Shannon propone un modelo simplificado de sistema de comunicación que consta de una serie de cajas negras encadenadas:
+
+\begin{enumerate}
+    \item \textbf{Origen de información:} Cualquier proceso que produzca algún mensaje o señal que es necesario hacer llegar al equipo receptor. Puede ser una secuencia de letras como en un telégrafo o un \textit{chat} instantáneo moderno, una señal analógica $f(T)$ que represente audio, una señal multidimensional $f(x,y,T)$ como es el caso de la televisión o un video, donde $f$ es la intensidad de la luz en un punto, $x,y$ son la posición del punto en la pantalla, y $T$ representa el tiempo discretizado en fotogramas; o incluso múltiples señales simultáneas como en el caso del video a color, que consta de 3 señales de 3 variables que representan los 3 canales de color que generalmente se necesitan para representar el espectro de colores que podemos ver.
+    \item \textbf{Transmisor:} Recibe el mensaje del origen de información, y con base en éste, hace alguna operación que produce una señal que pueda ser transmitida a través del canal. En el teléfono de cobre tradicional, la operación consiste simplemente en convertir las ondas de sonido en ondas eléctricas a través de un micrófono; en medios más modernos la operación es mucho más compleja, pero igualmente debe resultar en la generación de una señal capaz de ser transmitida por nuestro canal.
+    \item \textbf{Canal:} Es el medio a través del cual se transmite la señal del transmisor al receptor. En el caso del teléfono clásico, es un par de cables de cobre; en la radio AM/FM, es una banda de radiofrecuencia; en las líneas terrestres de internet modernas, generalmente es una fibra óptica a través de la cual pasa un rayo de luz. El canal tiene el efecto de \textbf{añadir ruido} a la señal transmitida, el cual proviene de una \textbf{fuente de ruido}, que representa los fenómenos físicos que resultan en la adición de elementos no deseados a nuestra señal o su distorsión.
+    \item \textbf{Receptor:} Recibe la señal enviada por el transmisor y realiza la operación inversa, reconstruyendo el mensaje a partir de la señal.
+    \item \textbf{Destino:} Es la persona o cosa que recibe el mensaje. Puede considerarse, por ejemplo, que un navegador web es el destino de una secuencia de datos si éstos están codificados en formato JSON, un formato comúnmente usado para transmitir datos para ser leídos y procesados por navegadores web.
+\end{enumerate}
+
+
+
+\section{El canal discreto sin ruido}
+
+Un canal discreto sin ruido es aquél a través del cual sea posible transmitir una serie de símbolos elementales $S_1, S_2, ..., S_n$ de un punto a otro; cada símbolo $S_i$ tiene una duración de $t_i$. El surtido de símbolos depende del canal; en un telégrafo simple, por ejemplo, los símbolos que pueden pasar son 4: el ``punto'', la ``raya'', el espacio entre letras, y el espacio entre palabras; en los teletipos de aquella época, todos los símbolos tenían la misma duración y había 32 símbolos posibles.
+
+En el caso del teletipo, es sencillo: cada símbolo representa $\log_2 32 = 5$ bits de información; y si el sistema es capaz de transmitir $n$ símbolos por segundo, entonces la capacidad del canal es $5n$ bits/s.
+
+
+\subsection{Caracterización de la fuente de información}
+
+La fuente de información puede caracterizarse a través 
+
 
 
 
