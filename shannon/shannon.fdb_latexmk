@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1773959762.90382 "c:/Users/danuk/Code/ITESO/maestria/semestre2/arboles/shannon/shannon.tex" "shannon.pdf" "shannon" 1773959764.16729 0
+["pdflatex"] 1773966789.49862 "c:/Users/danuk/Code/ITESO/maestria/semestre2/arboles/shannon/shannon.tex" "shannon.pdf" "shannon" 1773966790.83212 0
   "C:/Users/danuk/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map" 1772296953 82243 1f613cc6d41e31d3f380cec9f5c16fdc ""
   "C:/Users/danuk/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1760669741 13235209 50184fe35b557ccbf5c7f87cd8f58912 ""
   "C:/Users/danuk/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/fontawesome5/fa5brands0.enc" 1651500229 2920 d63721872b8c77041b88e51b8f7c291d ""
@@ -54,6 +54,7 @@
   "C:/Users/danuk/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmr7.pfb" 1256929440 121145 00b210fbe9efd7ce850c04e64670de9a ""
   "C:/Users/danuk/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri10.pfb" 1256929440 112593 fda2373ba4420af33949610de4c28fe8 ""
   "C:/Users/danuk/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb" 1256929440 27863 09ce3735688ffde955e72da27c95b61a ""
+  "C:/Users/danuk/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy7.pfb" 1256929440 27941 d1f5d03f61a46c3fcc3a2ba904ddda52 ""
   "C:/Users/danuk/AppData/Local/Programs/MiKTeX/tex/context/base/mkii/supp-pdf.mkii" 1580390158 71627 94eb9990bed73c364d7f53f960cc8c5b ""
   "C:/Users/danuk/AppData/Local/Programs/MiKTeX/tex/generic/babel/babel.sty" 1747240548 144990 cebd18e5891583d507b0c4173d69f6cf ""
   "C:/Users/danuk/AppData/Local/Programs/MiKTeX/tex/generic/babel/locale/es/babel-es.ini" 1747240551 4345 33a8cc6f0a7c6afcb84895b2c963a4e5 ""
@@ -207,10 +208,10 @@
   "C:/Users/danuk/AppData/Local/Programs/MiKTeX/tex/latex/ulem/ulem.sty" 1578651445 15682 94f55b803e160cf7fb6e4d77d07cfe1d ""
   "C:/Users/danuk/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/danuk/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1729265222 55384 b454dec21c2d9f45ec0b793f0995b992 ""
-  "c:/Users/danuk/Code/ITESO/maestria/semestre2/arboles/shannon/shannon.tex" 1773959761 11991 d155dd16a3b8ceaac0027c0e92670e3f ""
-  "shannon.aux" 1773959763 1449 e276f541082526a72c6ab65675e2b9ca "pdflatex"
-  "shannon.out" 1773959763 1204 b069b1cbd95f0936ede6f5727d803b0e "pdflatex"
-  "shannon.tex" 1773959761 11991 d155dd16a3b8ceaac0027c0e92670e3f ""
+  "c:/Users/danuk/Code/ITESO/maestria/semestre2/arboles/shannon/shannon.tex" 1773966788 16573 314fb2f722e50cfec4ff0149fcd80718 ""
+  "shannon.aux" 1773966790 1747 b0e15e6800d674e8e2b7a55e374b17a0 "pdflatex"
+  "shannon.out" 1773966790 1455 0d75e7a61098d063e62a3899367f8d56 "pdflatex"
+  "shannon.tex" 1773966788 16573 314fb2f722e50cfec4ff0149fcd80718 ""
   (generated)
   "shannon.aux"
   "shannon.log"

@@ -67,6 +67,21 @@ Un canal discreto sin ruido es aquél a través del cual sea posible transmitir 
 
 En el caso del teletipo, es sencillo: cada símbolo representa $\log_2 32 = 5$ bits de información; y si el sistema es capaz de transmitir $n$ símbolos por segundo, entonces la capacidad del canal es $5n$ bits/s.
 
+Eventualmente, se caracteriza la capacidad $C$ de un canal discreto como 
+
+\[
+   C = \lim_{T \to \infty} \frac{\log N(T)}{T}
+\]
+
+donde $N(T)$ es la cantidad de símbolos permitidos de duración $T$.
+
+
+\subsection{El teorema fundamental}
+
+Dados una fuente con $H$ bits por símbolo de entropía y un canal con $C$ bits/s de capacidad, es posible codificar la salida de la fuente de tal forma que ésta transmita a una tasa lo más cerca posible de $C/H$ símbolos por segundo. Es matemáticamente imposible transmitir por encima de este límite.
+
+Shannon establece en el mismo artículo la \textit{codificación Shannon-Fano}, haciendo referencia a un método de codificación de fuente previamente propuesto por R. M. Fano. Desde entonces se han desarrollado algoritmos de codificación de fuente más eficaces, hoy mejor conocidos como \textit{algoritmos de compresión}, tales como la transformada de Burrows-Wheeler (bzip2), el algoritmo de Huffman, el algoritmo DEFLATE (ZIP/gzip), el archivador de Eugene y Alexander Roshal (RAR), o el algoritmo Lempel-Ziv-cadena de Markov (LZMA).
+
 
 \section{Caracterización de la fuente de información}
 
@@ -80,11 +95,51 @@ A través del análisis matemático de las probabilidades de transición en el m
 
 donde $K$ es una constante positiva, y $p_i$ es la probabilidad de que ocurra alguno de los posibles símbolos de nuestra fuente.
 
-Esta función $H$ es la \textbf{entropía de la información,} que representa la cantidad de bits que es necesaria para representar la salida de nuestra fuente. Este concepto forma parte de numerosas aplicaciones tales como los \textit{algoritmos de compresión de entropía}, que funcionan a través de recodificar una secuencia de datos (e.g. un archivo) de tal forma que su entropía se acerque lo más posible a 8 bits por byte.
+Esta función $H$ es la \textbf{entropía de la información,} que representa la cantidad de bits que es necesaria para representar la salida de nuestra fuente. Este concepto forma parte de numerosas aplicaciones tales como los \textit{algoritmos de compresión de entropía}, que funcionan a través de recodificar una secuencia de datos (e.g. un archivo) de tal forma que su entropía se acerque lo más posible a 8 bits por byte. Esta función cumple \textbf{3 axiomas}: $H$ es continua en $p_i$, $H$ crece monotónicamente en $n$ para eventos de probabilidad uniforme $p_i = \frac{1}{n}$, y $H$ es aditiva para \textbf{elecciones compuestas} (descomponer una elección de símbolo en elecciones sucesivas da como resultado sumas ponderadas, esto es el fundamento de la ganancia de información).
+
+En cuanto a los órdenes de las fuentes de información, éstos son:
+
+\begin{itemize}
+    \item \textbf{Orden 0}: Símbolos elegidos independientemente con igual probabilidad.
+    \item \textbf{Orden 1}: Símbolos elegidos independientemente con la probabilidad del ``idioma'' de nuestra fuente.
+    \item \textbf{Orden 2}: Dígrafos (conjuntos de 2 letras) incorporados mediante una cadena de Markov.
+    \item \textbf{Órdenes superiores}: Idem, pero con conjuntos de n letras.
+\end{itemize}
+
+Para una fuente que se puede describir como una cadena de Markov, la entropía es:
+
+\[
+   H = \sum_i P_i H_i = -\sum_{i,j} P_i p_i(j) \log p_i(j)
+\]
+
+donde $P_i$ son las probabilidades de los estados de la cadena de Markov, y $p_i(j)$ son las probabilidades de las transiciones de la cadena.
 
 
-\section {Representación de las operaciones de codificación y decodificación}
+\section {Redundancia}
 
+La \textbf{entropía relativa} $H_{rel}$ de una fuente de información es la división de su entropía observada entre la máxima entropía posible. La \textbf{redundancia} es $1 - H_{rel}$.
+
+La redundancia hoy en día se puede interpretar como la \textit{compresibilidad} de un archivo o fuente de información, en el entendido de que los algoritmos de compresión, en principio, funcionan a través de recodificar la información de tal forma que su entropía observada se acerque lo más posible a la entropía máxima teórica. Esto también trae como resultado que \textit{no se puede comprimir más lo que ya está comprimido}, pues en teoría el algoritmo de compresión ya maximizó la entropía de la información.
+
+
+\section{El canal ruidoso}
+
+Los canales de transmisión en la vida real son ruidosos, por lo que éstos se modelan como una función de la señal transmitida $S$ y el ruido $N$ que es $E = f(S, N)$. Se caracteriza a detalle en términos de transiciones de probabilidad $p_{\alpha,i}(\beta, j)$: la probabilidad de que, en el estado $\alpha$ y la transmisión de un símbolo $i$, que se reciba $j$ y el canal pase al estado $\beta$.
+
+La \textbf{equivocación} $H_y(x)$ es la entropía condicional de la señal transmitida dada la señal recibida, es decir, la ambigüedad promedio acerca de lo que se transmitió:
+
+\[
+   R = H(x) - H_y(x)
+\]
+\[
+   R = H(x) + H(y) - H(x,y)
+\]
+
+En teoría, debería ser posible establecer un \textbf{canal de corrección} (un hipotético dispositivo o algoritmo que sea capaz de tomar nota de los errores de transmisión) de tal forma que, si su capacidad es $H_y(x)$, entonces sea posible corregir los errores hasta una fracción infinitesimal, pero nunca todos. Esto es imposible si la capacidad del canal de corrección es menor que $H_y(x)$.
+
+\subsection{Teorema fundamental del canal ruidoso}
+
+Dado un canal discreto con capacidad $C$ y una fuente discreta con entropía $H$. Si $H \leq C$, en teoría existe un sistema de codificación que permite que la salida de la fuente pueda ser transmitida con una equivocación arbitrariamente baja. Pero si $H > C$, entonces más bien la fuente debería ser codificada de tal forma que la equivocación sea menor que $H - C + \epsilon$ para una $\epsilon$ arbitrariamente baja, y es imposible lograr una equivocación menor que $H - C$.
 
 
 
