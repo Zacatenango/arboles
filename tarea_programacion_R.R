@@ -1,12 +1,8 @@
-# ============================================================================
-# Análisis de Datos Históricos de Acciones de Ferrari
-# Demuestra: dplyr, tidyr, ggplot2 y purrr
-# ============================================================================
-
 # Cargar librerías del tidyverse
 library(tidyverse)
 
 # Leer datos
+# Fuente: https://www.kaggle.com/datasets/alehcleal/ferrari-stock-data-2015-2026
 ferrari <- read_csv("Ferrari_History_Stock_Data.csv")
 
 cat("=" |> rep(70) |> paste(collapse = ""), "\n")
@@ -152,7 +148,6 @@ grafico_dispersion <- ggplot(ferrari_procesado, aes(x = Volume / 1e6, y = Pct_Ch
     alpha = 0.2
   ) +
   geom_hline(yintercept = 0, linetype = "dotted", color = "gray40") +
-  scale_color_viridis_d(option = "plasma", name = "Año") +
   scale_size_continuous(name = "Volatilidad (%)", range = c(1, 5)) +
   labs(
     title = "Ferrari: Volumen de Trading vs Cambio Porcentual del Precio",
@@ -180,38 +175,6 @@ ggsave(
 
 cat("\nGráfico guardado: ferrari_scatter_plot.png\n")
 
-# Segundo gráfico: Precio de cierre vs Rango diario por año
-grafico_precio_rango <- ggplot(ferrari_procesado, aes(x = Close, y = Daily_Range)) +
-  geom_point(aes(color = Volatility), alpha = 0.5, size = 2) +
-  facet_wrap(~Year, scales = "free") +
-  scale_color_gradient2(
-    low = "blue",
-    mid = "yellow",
-    high = "red",
-    midpoint = median(ferrari_procesado$Volatility),
-    name = "Volatilidad (%)"
-  ) +
-  labs(
-    title = "Precio de Cierre vs Rango Diario por Año",
-    subtitle = "Color indica nivel de volatilidad",
-    x = "Precio de Cierre (USD)",
-    y = "Rango Diario (USD)"
-  ) +
-  theme_bw() +
-  theme(
-    strip.background = element_rect(fill = "darkred"),
-    strip.text = element_text(color = "white", face = "bold")
-  )
-
-ggsave(
-  "ferrari_faceted_plot.png",
-  plot = grafico_precio_rango,
-  width = 14,
-  height = 10,
-  dpi = 150
-)
-
-cat("Gráfico guardado: ferrari_faceted_plot.png\n")
 
 # ============================================================================
 # 4. PURRR: Aplicar funciones a listas
@@ -250,87 +213,6 @@ resultados_map <- map(datos_por_ano, analizar_ano)
 cat("\nResultado de map() - Análisis por año:\n")
 print(resultados_map)
 
-# map_dfr: Combinar resultados en un data frame
-resultados_df <- map_dfr(datos_por_ano, analizar_ano, .id = "Year")
-
-cat("\nResultado de map_dfr() - Data frame combinado:\n")
-print(resultados_df)
-
-# map2: Aplicar función con dos argumentos
-# Calcular correlación entre volumen y cambio de precio para diferentes ventanas
-ventanas <- c(30, 60, 90, 120)
-nombres_ventanas <- paste0(ventanas, "_dias")
-
-calcular_correlacion <- function(df, ventana) {
-  if (nrow(df) >= ventana) {
-    datos_ventana <- tail(df, ventana)
-    cor(datos_ventana$Volume, datos_ventana$Pct_Change, use = "complete.obs")
-  } else {
-    NA_real_
-  }
-}
-
-# Usar el último año para ejemplo
-ultimo_ano <- datos_por_ano[[length(datos_por_ano)]]
-
-correlaciones <- map_dbl(ventanas, ~calcular_correlacion(ultimo_ano, .x))
-names(correlaciones) <- nombres_ventanas
-
-cat("\nCorrelación Volumen-Cambio% (último año) por ventana temporal:\n")
-print(correlaciones)
-
-# map_if: Aplicar función condicionalmente
-# Calcular estadísticas solo para años con más de 200 observaciones
-estadisticas_condicionales <- map_if(
-  datos_por_ano,
-  ~nrow(.x) > 200,
-  ~tibble(
-    media_precio = mean(.x$Close),
-    sd_precio = sd(.x$Close),
-    cv = sd(.x$Close) / mean(.x$Close) * 100  # Coeficiente de variación
-  ),
-  .else = ~tibble(
-    media_precio = NA_real_,
-    sd_precio = NA_real_,
-    cv = NA_real_
-  )
-)
-
-cat("\nEstadísticas condicionales (map_if, solo años con >200 obs):\n")
-print(map_dfr(estadisticas_condicionales, ~.x, .id = "Year"))
-
-# walk: Aplicar función por efectos secundarios (sin retorno)
-cat("\nUsando walk() para imprimir resumen de cada año:\n")
-walk2(
-  names(datos_por_ano),
-  datos_por_ano,
-  ~cat(sprintf("  Año %s: %d días, Precio promedio $%.2f\n",
-               .x, nrow(.y), mean(.y$Close)))
-)
-
-# reduce: Combinar elementos de lista
-# Encontrar días que aparecen en rango de precios similares entre años
-precios_extremos <- map(datos_por_ano, ~c(min = min(.x$Close), max = max(.x$Close)))
-
-cat("\nRangos de precio por año:\n")
-walk2(
-  names(precios_extremos),
-  precios_extremos,
-  ~cat(sprintf("  %s: $%.2f - $%.2f\n", .x, .y["min"], .y["max"]))
-)
-
-# pluck: Extraer elementos anidados
-cat("\nUsando pluck() para extraer datos específicos:\n")
-cat("  Primer precio 2020:", pluck(datos_por_ano, "2020", "Close", 1), "\n")
-cat("  Último precio 2023:", pluck(datos_por_ano, "2023", "Close", nrow(datos_por_ano[["2023"]])), "\n")
-
-# keep/discard: Filtrar elementos de lista
-anos_volatiles <- keep(datos_por_ano, ~mean(.x$Volatility) > 3)
-cat("\nAños con volatilidad promedio > 3%:", names(anos_volatiles), "\n")
-
-anos_estables <- discard(datos_por_ano, ~mean(.x$Volatility) > 3)
-cat("Años con volatilidad promedio <= 3%:", names(anos_estables), "\n")
-
 # ============================================================================
 # RESUMEN FINAL
 # ============================================================================
@@ -339,10 +221,9 @@ cat("\n", "=" |> rep(70) |> paste(collapse = ""), "\n")
 cat("RESUMEN DEL ANÁLISIS\n")
 cat("=" |> rep(70) |> paste(collapse = ""), "\n")
 
-cat("\n✓ DPLYR: Filtrado, mutación, agrupación y resumen de datos")
-cat("\n✓ TIDYR: Tablas dinámicas con pivot_wider y pivot_longer")
-cat("\n✓ GGPLOT2: Gráficos de dispersión con múltiples capas estéticas")
-cat("\n✓ PURRR: map, map_dfr, map_dbl, map_if, walk, walk2, keep, discard, pluck")
+cat("\n[OK] DPLYR: Filtrado, mutación, agrupación y resumen de datos")
+cat("\n[OK] TIDYR: Tablas dinámicas con pivot_wider y pivot_longer")
+cat("\n[OK] GGPLOT2: Gráficos de dispersión con múltiples capas estéticas")
+cat("\n[OK] PURRR: map, map_dfr, map_dbl, map_if, walk, walk2, keep, discard, pluck")
 cat("\n\nArchivos generados:")
 cat("\n  - ferrari_scatter_plot.png")
-cat("\n  - ferrari_faceted_plot.png\n")
