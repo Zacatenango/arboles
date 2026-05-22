@@ -61,7 +61,8 @@ Los componentes principales son tracking, proyectos, modelos y registry.
 Es una herramienta web-gráfica que permite administrar el ciclo de vida del ML.
 
 - **Tracking:** registra parámetros, métricas, artefactos y código
-- **Registry:** mantiene el ciclo ode vida del modelo staging -> production -> archived, etiquetas y anotaciones, aprobaciones y transiciones, integración con CI/CD
+- **Registry:** mantiene el ciclo ode vida del modelo staging -> production -> archived, etiquetas y anotaciones, aprobaciones y transiciones, integración con CI/CD.
+- **Build:** se hace un armado de imagen
 - **Proyectos:** empaqueta código reproducible con dependencias
 - **Modelos:** usa un formato universal para servir modelos (REST, batch, streaming)
 - **UI:** la interfaz para comparar runs, ver gráficas y gestionar modelos
@@ -73,3 +74,24 @@ Para interactuar con ella, corro mis modelos con una librería que se conecta a 
 # Podman
 
 Podman es un administrador de containers compatible con imágenes Docker, rootless, 
+
+
+# Serving
+
+- **REST o gRPC:** Predicción en tiempo real, baja latencia, por request individual.
+- **Batch:** corre cada cierto tiempo, con herramientas como Rundeck, Ctrl-M o cron.
+- **Streaming:** Kafka o Kinesis, eventos continuos, latencia media, stateful processing
+
+MLflow soporta servir modelos de ML en esos 3 modos.
+
+
+# Errores comunes
+
+- Dependencias incompatibles
+  - MLflow maneja eso a través de especificar expresamente todas las dependencias
+- Model drift
+- Timeouts
+  - Detectamos eso 
+- Saturación de micro
+- Fugas de memoria
+- Alta latencia
